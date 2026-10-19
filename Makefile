@@ -135,6 +135,8 @@ UPROGS=\
 	$U/_sleep\
 	$U/_pingpong\
 	$U/_args\
+	$U/_mystat\
+	$U/_find\
 	$U/_forktest\
 	$U/_grep\
 	$U/_init\
