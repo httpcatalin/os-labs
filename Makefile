@@ -154,6 +154,7 @@ UPROGS=\
 	$U/_run\
 	$U/_primes\
 	$U/_trace\
+	$U/_sysinfo\
 	$U/_logstress\
 	$U/_forphan\
 	$U/_dorphan\
