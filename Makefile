@@ -153,6 +153,7 @@ UPROGS=\
 	$U/_zombie\
 	$U/_run\
 	$U/_primes\
+	$U/_trace\
 	$U/_logstress\
 	$U/_forphan\
 	$U/_dorphan\
