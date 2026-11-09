@@ -45,3 +45,7 @@ entry("uptime");
 entry("sync");
 entry("trace");
 entry("sysinfo");
+entry("sem_init");
+entry("sem_down");
+entry("sem_up");
+entry("sem_trydown");

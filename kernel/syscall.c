@@ -105,6 +105,10 @@ extern uint64 sys_close(void);
 extern uint64 sys_sync(void);
 extern uint64 sys_trace(void);
 extern uint64 sys_sysinfo(void);
+extern uint64 sys_sem_init(void);
+extern uint64 sys_sem_down(void);
+extern uint64 sys_sem_up(void);
+extern uint64 sys_sem_trydown(void);
 
 // An array mapping syscall numbers from syscall.h
 // to the function that handles the system call.
@@ -134,18 +138,28 @@ static uint64 (*syscalls[])(void) = {
   [SYS_sync]    = sys_sync,
   [SYS_trace]   = sys_trace,
   [SYS_sysinfo] = sys_sysinfo,
+  [SYS_sem_init] = sys_sem_init,
+  [SYS_sem_down] = sys_sem_down,
+  [SYS_sem_up]   = sys_sem_up,
+  [SYS_sem_trydown] = sys_sem_trydown,
   // clang-format on
 };
 
 static char *syscallnames[] = {
-  [SYS_fork] "fork",   [SYS_exit] "exit",     [SYS_wait] "wait",
-  [SYS_pipe] "pipe",   [SYS_read] "read",     [SYS_kill] "kill",
-  [SYS_exec] "exec",   [SYS_fstat] "fstat",   [SYS_chdir] "chdir",
-  [SYS_dup] "dup",     [SYS_getpid] "getpid", [SYS_sbrk] "sbrk",
-  [SYS_pause] "pause", [SYS_uptime] "uptime", [SYS_open] "open",
-  [SYS_write] "write", [SYS_mknod] "mknod",   [SYS_unlink] "unlink",
-  [SYS_link] "link",   [SYS_mkdir] "mkdir",   [SYS_close] "close",
-  [SYS_sync] "sync",   [SYS_trace] "trace",   [SYS_sysinfo] "sysinfo",
+  [SYS_fork] "fork",         [SYS_exit] "exit",
+  [SYS_wait] "wait",         [SYS_pipe] "pipe",
+  [SYS_read] "read",         [SYS_kill] "kill",
+  [SYS_exec] "exec",         [SYS_fstat] "fstat",
+  [SYS_chdir] "chdir",       [SYS_dup] "dup",
+  [SYS_getpid] "getpid",     [SYS_sbrk] "sbrk",
+  [SYS_pause] "pause",       [SYS_uptime] "uptime",
+  [SYS_open] "open",         [SYS_write] "write",
+  [SYS_mknod] "mknod",       [SYS_unlink] "unlink",
+  [SYS_link] "link",         [SYS_mkdir] "mkdir",
+  [SYS_close] "close",       [SYS_sync] "sync",
+  [SYS_trace] "trace",       [SYS_sysinfo] "sysinfo",
+  [SYS_sem_init] "sem_init", [SYS_sem_down] "sem_down",
+  [SYS_sem_up] "sem_up",     [SYS_sem_trydown] "sem_trydown",
 };
 
 void

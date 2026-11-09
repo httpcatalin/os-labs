@@ -28,6 +28,10 @@ int uptime(void);
 int sync(void);
 int trace(int);
 int sysinfo(struct sysinfo *);
+int sem_init(int, int);
+int sem_down(int);
+int sem_up(int);
+int sem_trydown(int);
 
 // ulib.c
 int stat(const char *, struct stat *);

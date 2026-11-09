@@ -18,6 +18,7 @@ OBJS = \
   $K/trap.o \
   $K/syscall.o \
   $K/sysproc.o \
+  $K/sem.o \
   $K/bio.o \
   $K/fs.o \
   $K/log.o \
@@ -155,6 +156,9 @@ UPROGS=\
 	$U/_primes\
 	$U/_trace\
 	$U/_sysinfo\
+	$U/_semtest\
+	$U/_mix\
+	$U/_trydown\
 	$U/_logstress\
 	$U/_forphan\
 	$U/_dorphan\
