@@ -159,6 +159,7 @@ UPROGS=\
 	$U/_semtest\
 	$U/_mix\
 	$U/_trydown\
+	$U/_uthread\
 	$U/_logstress\
 	$U/_forphan\
 	$U/_dorphan\
@@ -215,3 +216,7 @@ check-qemu-version:
 .PHONY: fmt
 fmt:
 	clang-format -i $(wildcard kernel/*.[ch] user/*.[ch] mkfs/*.c)
+
+$U/_uthread: $U/uthread.o $U/uthread_switch.o $(ULIB) $U/user.ld
+	$(LD) $(LDFLAGS) -T $U/user.ld -o $U/_uthread $U/uthread.o $U/uthread_switch.o $(ULIB)
+	$(OBJDUMP) -S $U/_uthread > $U/uthread.asm
